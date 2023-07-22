@@ -3,7 +3,7 @@ public class positions {
 	//Horizontal A-H
 	public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
 	//Vertical 1-8
-	public String[] vertical = {"1", "2", "3", "4", "5", "6", "7", "8"};
+	public String[] vertical = {"8", "7", "6", "5", "4", "3", "2", "1"};
 	//2d list?
 	String[][] boardPositions = new String[8][8];
 	public void positions(){
@@ -14,8 +14,8 @@ public class positions {
 				this.boardPositions[i][j] = horizontal[j]+vertical[i];	
 			}
 		}
-        for (String[] row : boardPositions) {
-            System.out.println(Arrays.toString(row));
+		for (String[] row : boardPositions) {
+		    System.out.println(Arrays.toString(row));
 		}
 	}
 
