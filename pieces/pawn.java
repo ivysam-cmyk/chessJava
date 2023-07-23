@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class pawn {
 
 	public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
-    private int numberOfMovesInTotal = 0;
+    private static int numberOfMovesInTotal = 0;
     //first populate the board, there should be 8 pieces in the index X6
     public static void pawnPop(){
         //get the 2d arraylist and change it
@@ -21,18 +21,44 @@ public class pawn {
             System.out.println(row);
         }
     }
-    public boolean move(String initPos, String finalPos){
+    public static boolean move(String initPos, String finalPos){
         //make sure mvmt follows rules
         //seperate the move into [][]
+        //MAKE SURE THE INITIAL POS GOES BACK TO " "
         String[] initDirectionalMoveArray = initPos.split("");
         String[] finalDirectionalMoveArray = finalPos.split("");
         //record the number of moves pawn makes
-        int numberofMoves = Integer.parseInt(finalDirectionalMoveArray[1]) - Integer.parseInt(initDirectionalMoveArray[1]);
-        if((numberOfMovesInTotal == 0) && ((Integer.parseInt(finalDirectionalMoveArray[1]) - Integer.parseInt(initDirectionalMoveArray[1])) <=2)){
-            //change the position on the board
-            //check if the final pos on board is empty, only need to check the vertical axis
-            
-            if(boardPositions.get())
+        int initVerPos = Integer.parseInt(initDirectionalMoveArray[1]);
+        int finalVerPos = Integer.parseInt(finalDirectionalMoveArray[1]);
+        //convert the letter from POS to an ASCII number
+        int initHorPos = (initDirectionalMoveArray[0]).charAt(0);
+        int finalHorPos = (finalDirectionalMoveArray[0]).charAt(0);
+        int numofHorMoves= finalHorPos - initHorPos;
+        if (numofHorMoves<0){
+            numofHorMoves = -numofHorMoves;
         }
+        int numofVerMoves = initVerPos - finalVerPos;
+        if (numofVerMoves<0){
+            numofVerMoves = -numofVerMoves;
+        }
+        //if havent moved yet, can only move 1/2 vert
+        if((numberOfMovesInTotal == 0) && (numofVerMoves <=2) && numofHorMoves==0) {
+            //change the position on the board
+            //check if the final pos on board is empty, 8-index = posOnBoard
+            //8-index = posOnBoard
+            // get the name of the p from initPos
+            
+            return true;
+        }
+        // else if  move diagonally 1 or vert 1, if alr moved b4
+        else if((numofVerMoves>0) && ((numofVerMoves==1 && numofHorMoves ==0) || (numofVerMoves==1 && numofHorMoves ==1))){
+            
+            return true;
+        }
+        return false;
     } 
+    public static void main(String[] args) {
+       pawn pp = new pawn();
+       move("A1","A2");
+    }
 }
