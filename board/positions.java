@@ -35,7 +35,7 @@ public class positions {
         pawn.pawnPop();
     }
     //checks if the particular pos is empty or occupied
-    public boolean boardPosChecker(String pos){
+    public static boolean boardPosChecker(String pos){
         String[] posArray = pos.split("");
         // when ASCII is 65, hor index is 0
         int horPos = (posArray[0]).charAt(0)-65;
