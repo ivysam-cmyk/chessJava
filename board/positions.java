@@ -1,5 +1,9 @@
+package board;
+
+import pieces.pawn;
+
 import java.util.ArrayList;
-import java.util.Arrays;
+
 public class positions {
 	//Horizontal A-H
 	public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
@@ -7,10 +11,10 @@ public class positions {
 	public String[] vertical = {"8", "7", "6", "5", "4", "3", "2", "1"};
 	//2d list? 2d Arraylist is better
 	// public String[][] boardPositions = new String[8][8];
-	ArrayList<ArrayList<ArrayList<String>>> boardPositions = new ArrayList<>();
-	//first 2d array is the board 8x8 positions
+	public static ArrayList<ArrayList<ArrayList<String>>> boardPositions = new ArrayList<>();
+	//first 2d array is the board 8x8 board.positions
 	//second layer is the arraylist containing first element is the piece and second item is the position which is constant.
-	public void positions(){
+	public void setBoardPositions(){
 		//create the 2d array
 		for(int i =0; i<8; i++){
 			ArrayList<ArrayList<String>> eachRow = new ArrayList<>();
@@ -24,13 +28,15 @@ public class positions {
 			}
 			boardPositions.add(eachRow);
 		}
-		for (ArrayList<ArrayList<String>> row : boardPositions) {
-		    System.out.println(row);
-		}
+		// for (ArrayList<ArrayList<String>> row : boardPositions) {
+		//     System.out.println(row);
+		// }
+		System.out.println("-------");
+		pawn.pawnPop();
 	}
 
 	public static void main(String[] args) {
-		positions board = new positions();	
-		board.positions();
-	}	
+		positions board = new positions();
+		board.setBoardPositions();
+	}
 }
