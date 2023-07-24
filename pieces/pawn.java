@@ -23,15 +23,15 @@ public class pawn {
             System.out.println(row);
         }
     }
-    public static boolean move(String initPos, String finalPos){
+    public boolean move(String initPos, String finalPos){
         //make sure mvmt follows rules
         //seperate the move into [][]
         //MAKE SURE THE INITIAL POS GOES BACK TO " "
         String[] initDirectionalMoveArray = initPos.split("");
         String[] finalDirectionalMoveArray = finalPos.split("");
         //record the number of moves pawn makes
-        int initVerPos = Integer.parseInt(initDirectionalMoveArray[1]) + 6;
-        int finalVerPos = Integer.parseInt(finalDirectionalMoveArray[1]) + 6;
+        int initVerPos = 8-Integer.parseInt(initDirectionalMoveArray[1]);
+        int finalVerPos = 8-Integer.parseInt(finalDirectionalMoveArray[1]);
         //convert the letter from POS to an ASCII number
         int initHorPos = (initDirectionalMoveArray[0]).charAt(0) - 65;
         int finalHorPos = (finalDirectionalMoveArray[0]).charAt(0) - 65;
@@ -50,8 +50,11 @@ public class pawn {
             if(positions.boardPosChecker(finalPos)){
                 //get the old pos string first
                 ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
+                // reqPos is each singular pos on the board containing an array
                 ArrayList<String> reqPos = reqRow.get(initHorPos);
                 String pieceString = reqPos.get(0);
+                // make the old position back to blank
+                reqPos.set(0, " ");
                 reqRow = boardPositions.get(finalVerPos);
                 reqPos = reqRow.get(finalHorPos);
                 reqPos.set(0, pieceString);
@@ -73,8 +76,6 @@ public class pawn {
         }
         return false;
     } 
-    public static void main(String[] args) {
-       pawn pp = new pawn();
-       move("A1","A2");
-    }
+    // public static void main(String[] args) {
+    // }
 }

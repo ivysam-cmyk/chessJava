@@ -40,7 +40,7 @@ public class positions {
         // when ASCII is 65, hor index is 0
         int horPos = (posArray[0]).charAt(0)-65;
         // when the pos has ver of 1 actual index is 7
-        int verPos = Integer.parseInt(posArray[1])+6;
+        int verPos =  8-Integer.parseInt(posArray[1]);
         ArrayList<ArrayList<String>> reqRow = boardPositions.get(verPos);
         ArrayList<String> reqPos = reqRow.get(horPos);
         if(reqPos.get(0) == " "){
@@ -53,6 +53,7 @@ public class positions {
         positions board = new positions();
         board.setBoardPositions();
         System.out.println("-------");
-        pawn.move("A2","A4");
+        pawn pp = new pawn();
+        pp.move("G2","A4");
     }
 }
