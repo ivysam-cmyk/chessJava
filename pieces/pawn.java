@@ -45,6 +45,9 @@ public class pawn {
         int initHorPos = (initDirectionalMoveArray[0]).charAt(0) - 65;
         int finalHorPos = (finalDirectionalMoveArray[0]).charAt(0) - 65;
         int numofHorMoves= finalHorPos - initHorPos;
+        if (numofHorMoves!=0){
+            //if the pawn moves diagonally make sure that another piece is present at that spot
+        }
         if (numofHorMoves<0){
             numofHorMoves = -numofHorMoves;
         }
@@ -78,8 +81,8 @@ public class pawn {
             
             return true;
         }
-        // else if  move diagonally 1 or vert 1, if alr moved b4
-        else if((numofVerMoves>0) && ((numofVerMoves==1 && numofHorMoves ==0) || (numofVerMoves==1 && numofHorMoves ==1))){
+        // if moved b4, and movign w or without attacking other piece
+        else if(numberOfMovesInTotal>0 && numofVerMoves==1){
             if(positions.boardPosChecker(finalPos)){
                 //get the old pos string first
                 ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
@@ -96,6 +99,8 @@ public class pawn {
                 for (ArrayList<ArrayList<String>> row : boardPositions) {
                     System.out.println(row);
                 }
+            } else if ((positions.boardPosChecker(finalPos) == false) && numofHorMoves ==1 && numofVerMoves ==1){
+
             }
             return true;
         }
