@@ -54,6 +54,8 @@ public class positions {
         board.setBoardPositions();
         System.out.println("-------");
         pawn pp = new pawn();
-        pp.move("G2","A4");
+        pawn p2 = new pawn();
+        pp.move("G2","G4");
+        p2.move("G7","G6");
     }
 }

@@ -19,6 +19,15 @@ public class pawn {
             pawnRow.set(i,eachPos);
         }
         boardPositions.set(6,pawnRow);
+        //populate the other player's pawns
+        pawnRow = boardPositions.get(1);
+        eachPos = new ArrayList<>();
+        for(int i=0;i<8;i++){
+            eachPos = pawnRow.get(i);
+            eachPos.set(0,"p"+i);
+            pawnRow.set(i,eachPos);
+        }
+        boardPositions.set(1,pawnRow);
         for (ArrayList<ArrayList<String>> row : boardPositions) {
             System.out.println(row);
         }
@@ -71,7 +80,23 @@ public class pawn {
         }
         // else if  move diagonally 1 or vert 1, if alr moved b4
         else if((numofVerMoves>0) && ((numofVerMoves==1 && numofHorMoves ==0) || (numofVerMoves==1 && numofHorMoves ==1))){
-            
+            if(positions.boardPosChecker(finalPos)){
+                //get the old pos string first
+                ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
+                // reqPos is each singular pos on the board containing an array
+                ArrayList<String> reqPos = reqRow.get(initHorPos);
+                String pieceString = reqPos.get(0);
+                // make the old position back to blank
+                reqPos.set(0, " ");
+                reqRow = boardPositions.get(finalVerPos);
+                reqPos = reqRow.get(finalHorPos);
+                reqPos.set(0, pieceString);
+                System.out.println(pieceString);
+                System.out.println(" The new board ... ");
+                for (ArrayList<ArrayList<String>> row : boardPositions) {
+                    System.out.println(row);
+                }
+            }
             return true;
         }
         return false;
