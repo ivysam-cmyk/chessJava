@@ -3,8 +3,9 @@ package board;
 import pieces.pawn;
 
 import java.util.ArrayList;
-
 public class positions {
+    // list of the pieces removed from the board by being attacked
+    public static ArrayList<String> piecesAttacked = new ArrayList<>();
     //Horizontal A-H
     public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
     //Vertical 1-8
@@ -28,9 +29,9 @@ public class positions {
             }
             boardPositions.add(eachRow);
         }
-        // for (ArrayList<ArrayList<String>> row : boardPositions) {
-        //     System.out.println(row);
-        // }
+        /* for (ArrayList<ArrayList<String>> row : boardPositions) {
+            System.out.println(row);
+        } */
         System.out.println("-------");
         pawn.pawnPop();
     }
