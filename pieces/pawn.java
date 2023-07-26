@@ -44,14 +44,17 @@ public class pawn {
         int finalHorPos = (finalDirectionalMoveArray[0]).charAt(0) - 65;
 
         int numofHorMoves= finalHorPos - initHorPos;
-        int numofVerMoves = initVerPos - finalVerPos;
+        int numofVerMoves = finalVerPos - initVerPos;
 
         //the ver moves MUST BE -VE AND changed to +ve for the if condition
-        if (numofVerMoves<0){
-            numofVerMoves = -numofVerMoves;
-        } else{
+        System.out.println("The number of vertical moves: "+numofVerMoves);
+        if(numofVerMoves > 0){
             return false;
         }
+        if (numofVerMoves<0){
+            numofVerMoves = -numofVerMoves;
+        }
+
         //if havent moved yet, can only move 1/2 vert
         if((numberOfMovesInTotal == 0) && (numofVerMoves <=2) && numofHorMoves==0) {
             //change the position on the board
@@ -91,7 +94,7 @@ public class pawn {
                 reqRow = boardPositions.get(finalVerPos);
                 reqPos = reqRow.get(finalHorPos);
                 reqPos.set(0, pieceString);
-                System.out.println(" The new board ... ");
+                System.out.println("After player 1 moves... ");
                 for (ArrayList<ArrayList<String>> row : boardPositions) {
                     System.out.println(row);
                 }
@@ -111,6 +114,14 @@ public class pawn {
         }
         return false;
     } 
-    // public static void main(String[] args) {
-    // }
+    public static void main(String[] args) {
+        positions board = new positions();
+        board.setBoardPositions();
+        pawn pp = new pawn();
+        pawnOther p2 = new pawnOther();
+        pp.move("G2","G4");
+        pp.move("G4","G5");
+        p2.move("F7", "F6");
+        pp.move("G5","F6");
+    }
 }

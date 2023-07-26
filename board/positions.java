@@ -50,14 +50,8 @@ public class positions {
         return false;
     }
 
-    public static void main(String[] args) {
-        positions board = new positions();
-        board.setBoardPositions();
-        System.out.println("-------");
-        pawn pp = new pawn();
-        pawn p2 = new pawn();
-        pp.move("G2","G4");
-        pp.move("G4","G5");
-        p2.move("G7","G6");
-    }
+    // public static void main(String[] args) {
+    //     System.out.println("-------");
+    //     // p2.move("F7","F5");
+    // 
 }
