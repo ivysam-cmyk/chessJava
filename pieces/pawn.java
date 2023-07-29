@@ -8,6 +8,7 @@ import java.util.Scanner;
 import board.positions;
 
 public class pawn {
+    public int multiplier = -1;
     public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
     private int numberOfMovesInTotal = 0;
     //first populate the board, there should be 8 pieces in the index X6
@@ -35,9 +36,9 @@ public class pawn {
         }
     }
 
-    public boolean move(String initPos, String finalPos,Integer multiplier){
+    public boolean move(String initPos, String finalPos,int multiplier){
         //keep the default value of multiplier at -1
-        multiplier = multiplier == null ? -1 : multiplier;
+        this.multiplier = multiplier;
         String[] initDirectionalMoveArray = initPos.split("");
         String[] finalDirectionalMoveArray = finalPos.split("");
         //record the number of moves pawn makes
@@ -129,6 +130,10 @@ public class pawn {
         }
         return false;
     } 
+    //when calling in p.s.v.m can call using only 2 parameters
+    public boolean move (String initPos, String finalPos){
+        return move(initPos, finalPos, -1);
+    }
     // public static void main(String[] args) {
     // }
 }
