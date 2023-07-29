@@ -57,7 +57,6 @@ public class positions {
         pawn pp = new pawn();
         pawnOther p2 = new pawnOther();
         pp.move("G2","G4");
-        pp.move("G4","G5");
         p2.move("F7", "F6");
         pp.move("G5","F6");
     }

@@ -37,6 +37,13 @@ public class pawn {
     }
 
     public boolean move(String initPos, String finalPos,int multiplier){
+        //if init pos is empty then quit
+        if(positions.boardPosChecker(initPos)){
+            System.out.println("------------");
+            System.out.println("The initial position has no piece, try again.");
+            System.out.println("------------");
+            return false;
+        }
         //keep the default value of multiplier at -1
         this.multiplier = multiplier;
         String[] initDirectionalMoveArray = initPos.split("");
@@ -59,7 +66,6 @@ public class pawn {
         if(numofVerMoves <= 0){
             return false;
         }
-
         System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
         //if havent moved yet, can only move 1/2 vert
         if((numberOfMovesInTotal == 0) && (numofVerMoves <=2) && numofHorMoves==0) {
@@ -76,7 +82,6 @@ public class pawn {
                 reqRow = boardPositions.get(finalVerPos);
                 reqPos = reqRow.get(finalHorPos);
                 reqPos.set(0, pieceString);
-                System.out.println(pieceString);
                 System.out.println(" The new board ... ");
                 for (ArrayList<ArrayList<String>> row : boardPositions) {
                     System.out.println(row);
