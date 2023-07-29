@@ -1,13 +1,15 @@
 package pieces;
 import static board.positions.boardPositions;
 import static board.positions.piecesAttacked;
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import board.positions;
 
 public class pawn {
 
-	public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
+    public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
     private int numberOfMovesInTotal = 0;
     //first populate the board, there should be 8 pieces in the index X6
     public static void pawnPop(){
@@ -125,14 +127,6 @@ public class pawn {
         }
         return false;
     } 
-    public static void main(String[] args) {
-        positions board = new positions();
-        board.setBoardPositions();
-        pawn pp = new pawn();
-        pawnOther p2 = new pawnOther();
-        pp.move("G2","G4");
-        pp.move("G4","G5");
-        p2.move("F7", "F6");
-        pp.move("G5","F6");
-    }
+    // public static void main(String[] args) {
+    // }
 }

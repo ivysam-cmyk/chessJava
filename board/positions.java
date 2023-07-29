@@ -1,6 +1,7 @@
 package board;
 
 import pieces.pawn;
+import pieces.pawnOther;
 
 import java.util.ArrayList;
 public class positions {
@@ -50,8 +51,14 @@ public class positions {
         return false;
     }
 
-    // public static void main(String[] args) {
-    //     System.out.println("-------");
-    //     // p2.move("F7","F5");
-    // 
+    public static void main(String[] args) {
+        positions board = new positions();
+        board.setBoardPositions();
+        pawn pp = new pawn();
+        pawnOther p2 = new pawnOther();
+        pp.move("G2","G4");
+        pp.move("G4","G5");
+        p2.move("F7", "F6");
+        pp.move("G5","F6");
+    }
 }
