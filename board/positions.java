@@ -16,7 +16,7 @@ public class positions {
     public static ArrayList<ArrayList<ArrayList<String>>> boardPositions = new ArrayList<>();
     //first 2d array is the board 8x8 board.positions
     //second layer is the arraylist containing first element is the piece and second item is the position which is constant.
-    public void setBoardPositions(){
+    public void positions(){
         //create the 2d array
         for(int i =0; i<8; i++){
             ArrayList<ArrayList<String>> eachRow = new ArrayList<>();
@@ -53,7 +53,7 @@ public class positions {
 
     public static void main(String[] args) {
         positions board = new positions();
-        board.setBoardPositions();
+        board.positions();
         pawn pp = new pawn();
         pawnOther p2 = new pawnOther();
         pp.move("G2","G4");
