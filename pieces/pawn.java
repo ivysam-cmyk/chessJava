@@ -8,7 +8,6 @@ import java.util.Scanner;
 import board.positions;
 
 public class pawn {
-
     public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
     private int numberOfMovesInTotal = 0;
     //first populate the board, there should be 8 pieces in the index X6
@@ -35,7 +34,10 @@ public class pawn {
             System.out.println(row);
         }
     }
-    public boolean move(String initPos, String finalPos){
+
+    public boolean move(String initPos, String finalPos,Integer multiplier){
+        //keep the default value of multiplier at -1
+        multiplier = multiplier == null ? -1 : multiplier;
         String[] initDirectionalMoveArray = initPos.split("");
         String[] finalDirectionalMoveArray = finalPos.split("");
         //record the number of moves pawn makes
@@ -47,16 +49,16 @@ public class pawn {
 
         int numofHorMoves= finalHorPos - initHorPos;
         int numofVerMoves = finalVerPos - initVerPos;
+        //after this numofVerMoves must be >0. 
+        numofVerMoves = multiplier * numofVerMoves;
 
         //the ver moves MUST BE -VE AND changed to +ve for the if condition
         System.out.println("Total moves by player 1: "+ numberOfMovesInTotal);
-        if(numofVerMoves > 0){
+        //pawn piece should only go up (diagonally)
+        if(numofVerMoves <= 0){
             return false;
         }
-        if (numofVerMoves<0){
-            numofVerMoves = -numofVerMoves;
-        }
-        
+
         System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
         //if havent moved yet, can only move 1/2 vert
         if((numberOfMovesInTotal == 0) && (numofVerMoves <=2) && numofHorMoves==0) {
