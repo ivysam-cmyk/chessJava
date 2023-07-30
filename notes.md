@@ -13,9 +13,7 @@
 _methods of classes_
 
 **pieces.pawn and other pieces**
-move()
-kill()
-die()
+move() includes attack
 
 <u> Areas of improvement</u>
 Make a move class and every piece will extend it accordingly - this is not possible

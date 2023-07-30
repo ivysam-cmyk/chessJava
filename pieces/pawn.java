@@ -3,8 +3,6 @@ import static board.positions.boardPositions;
 import static board.positions.piecesAttacked;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 import board.positions;
 
 public class pawn {
