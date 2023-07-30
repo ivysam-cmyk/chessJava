@@ -1,6 +1,10 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import board.positions;
 import pieces.pawn;
+import pieces.pawnOther;
+
+import static board.positions.boardPositions;
 
 public class Main {
     static int i=0;
@@ -30,15 +34,23 @@ public class Main {
                 pawn p1 = new pawn();
                 p1.move(p1posArray[0], p1posArray[1]);
                 i+=1;
+                for (ArrayList<ArrayList<String>> row : boardPositions) {
+                    System.out.println(row);
+                }
             }else{
                 break;
             }
             //player 2
             String[] p2posArray = asker("2");
-            if (p2posArray[1].substring(1).equals("7")){
-                pawn p2 = new pawn();
+            if (p2posArray[0].substring(1).equals("7")){
+                System.out.println("p2 if cond");
+                pawn p2 = new pawnOther();
                 p2.move(p2posArray[0], p2posArray[1]);
                 i+=1;
+                for (ArrayList<ArrayList<String>> row : boardPositions) {
+                    System.out.println(row);
+                }
+
             }else{
                 break;
             }

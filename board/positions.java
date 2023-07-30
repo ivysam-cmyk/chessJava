@@ -30,11 +30,11 @@ public class positions {
             }
             boardPositions.add(eachRow);
         }
-        /* for (ArrayList<ArrayList<String>> row : boardPositions) {
+        for (ArrayList<ArrayList<String>> row : boardPositions) {
             System.out.println(row);
-        } */
+        }
         System.out.println("-------");
-        pawn.pawnPop();
+        pawn.pop();
     }
     //checks if the particular pos is empty or occupied
     public static boolean boardPosChecker(String pos){

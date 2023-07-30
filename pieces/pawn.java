@@ -7,26 +7,25 @@ import board.positions;
 
 public class pawn {
     public int multiplier = -1;
-    public String[] horizontal = {"A", "B", "C", "D", "E", "F", "G", "H"};
     private int numberOfMovesInTotal = 0;
     //first populate the board, there should be 8 pieces in the index X6
-    public static void pawnPop(){
+    public static void pop(){
         //get the 2d arraylist and change it
         ArrayList<ArrayList<String>> pawnRow = boardPositions.get(6);
         ArrayList<String> eachPos = new ArrayList<>();
-        for(int i=0;i<8;i++){
-            eachPos = pawnRow.get(i);
+        for(int i=1;i<9;i++){
+            eachPos = pawnRow.get(i-1);
             eachPos.set(0,"p"+i);
-            pawnRow.set(i,eachPos);
+            pawnRow.set(i-1,eachPos);
         }
         boardPositions.set(6,pawnRow);
         //populate the other player's pawns
         pawnRow = boardPositions.get(1);
         eachPos = new ArrayList<>();
-        for(int i=0;i<8;i++){
-            eachPos = pawnRow.get(i);
+        for(int i=1;i<9;i++){
+            eachPos = pawnRow.get(i-1);
             eachPos.set(0,"p"+i);
-            pawnRow.set(i,eachPos);
+            pawnRow.set(i-1,eachPos);
         }
         boardPositions.set(1,pawnRow);
         for (ArrayList<ArrayList<String>> row : boardPositions) {
@@ -61,6 +60,7 @@ public class pawn {
         //the ver moves MUST BE -VE AND changed to +ve for the if condition
         System.out.println("Total moves by player 1: "+ numberOfMovesInTotal);
         //pawn piece should only go up (diagonally)
+        System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
         if(numofVerMoves <= 0){
             return false;
         }
@@ -81,13 +81,11 @@ public class pawn {
                 reqPos = reqRow.get(finalHorPos);
                 reqPos.set(0, pieceString);
                 System.out.println(" The new board ... ");
-                for (ArrayList<ArrayList<String>> row : boardPositions) {
-                    System.out.println(row);
-                }
             }
             //8-index = posOnBoard
             // get the name of the p from initPos
             numberOfMovesInTotal+=1;
+            System.out.println("THE number of moves in total "+ numberOfMovesInTotal);
             return true;
         }
         // if moved b4, and movign w or without attacking other piece
@@ -126,9 +124,6 @@ public class pawn {
                 boardPositions.set(finalVerPos, reqRow);
             }
             numberOfMovesInTotal+=1;
-            for (ArrayList<ArrayList<String>> row : boardPositions) {
-                System.out.println(row);
-            }
             return true;
         }
         return false;
