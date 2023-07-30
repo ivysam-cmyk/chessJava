@@ -25,7 +25,8 @@ public class Main {
         board.positions();
         do{
             String[] p1posArray = asker("1");
-            if (p1posArray[0].substring(1) == "2"){
+            if (p1posArray[0].substring(1).equals("2")){
+                System.out.println("if cond satisfied");
                 pawn p1 = new pawn();
                 p1.move(p1posArray[0], p1posArray[1]);
                 i+=1;
@@ -34,7 +35,7 @@ public class Main {
             }
             //player 2
             String[] p2posArray = asker("2");
-            if (p2posArray[1].substring(1) == "7"){
+            if (p2posArray[1].substring(1).equals("7")){
                 pawn p2 = new pawn();
                 p2.move(p2posArray[0], p2posArray[1]);
                 i+=1;
