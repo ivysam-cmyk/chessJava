@@ -2,6 +2,7 @@ package board;
 
 import pieces.pawn;
 import pieces.pawnOther;
+import pieces.rook;
 
 import java.util.ArrayList;
 public class positions {
@@ -35,6 +36,7 @@ public class positions {
         }
         System.out.println("-------");
         pawn.pop();
+        rook.pop();
     }
     //checks if the particular pos is empty or occupied
     public static boolean boardPosChecker(String pos){
