@@ -50,9 +50,10 @@ public class rook {
         System.out.println("Total moves by player 1: "+ numberOfMovesInTotal);
         System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
 
-        if (positions.boardPosChecker(finalPos)){
+        if (positions.boardPosChecker(finalPos) && numofHorMoves ==0){
             //check all positions in a straight line between them
-
+            ArrayList<String> betweenInF = new ArrayList<>();
+            
         }
 
         return false;
