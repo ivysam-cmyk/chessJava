@@ -31,12 +31,12 @@ public class positions {
             }
             boardPositions.add(eachRow);
         }
-        for (ArrayList<ArrayList<String>> row : boardPositions) {
-            System.out.println(row);
-        }
         System.out.println("-------");
         pawn.pop();
         rook.pop();
+        for (ArrayList<ArrayList<String>> row : boardPositions) {
+            System.out.println(row);
+        }
     }
     //checks if the particular pos is empty or occupied
     public static boolean boardPosChecker(String pos){
@@ -57,8 +57,10 @@ public class positions {
         positions board = new positions();
         board.positions();
         pawn pp = new pawn();
-        pawnOther p2 = new pawnOther();
-        pp.move("G2","G4");
-        p2.move("F7", "F6");
+        // pawnOther p2 = new pawnOther();
+        pp.move("A2","A3");
+        // p2.move("F7", "F6");
+        rook rr = new rook();
+        rr.move("A1", "A2");
     }
 }
