@@ -63,8 +63,7 @@ public class rook {
             else if (initVerPos > finalVerPos){
                 System.out.println("initVerPos: "+initVerPos+" finalVerPos: "+ finalVerPos);
                 for(int i = initVerPos-1;i>finalVerPos-1;i--){
-                    System.out.println("1234");
-                    System.out.println("1234");
+                    System.out.println(i);
                     //for the same hor coordinate
                     reqRow = boardPositions.get(i);
                     reqPos = reqRow.get(initHorPos);
@@ -73,9 +72,18 @@ public class rook {
             }
                 // check if all the items in betweenInF are ""
                 for (String item: betweenInF){
-                    if (!item.equals("")){
+                    System.out.println(item);
+                    if (!item.equals(" ")){
                         return false;
                     }
+                    reqRow = boardPositions.get(initVerPos);
+                    reqPos = reqRow.get(initHorPos);
+                    String pieceString = reqPos.get(0);
+                    reqPos.set(0, " ");
+
+                    reqRow = boardPositions.get(finalVerPos);
+                    reqPos = reqRow.get(finalHorPos);
+                    reqPos.set(0, pieceString);
                 }
             for (ArrayList<ArrayList<String>> row : boardPositions) {
                 System.out.println(row);

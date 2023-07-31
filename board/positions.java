@@ -58,9 +58,9 @@ public class positions {
         board.positions();
         pawn pp = new pawn();
         // pawnOther p2 = new pawnOther();
-        pp.move("A2","A3");
+        pp.move("A2","A4");
         // p2.move("F7", "F6");
         rook rr = new rook();
-        rr.move("A1", "A2");
+        rr.move("A1", "A3");
     }
 }
