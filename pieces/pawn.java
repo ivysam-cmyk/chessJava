@@ -18,13 +18,12 @@ public class pawn {
             eachPos.set(0,"p"+i);
             pawnRow.set(i-1,eachPos);
         }
-        boardPositions.set(6,pawnRow);
         //populate the other player's pawns
         pawnRow = boardPositions.get(1);
         eachPos = new ArrayList<>();
         for(int i=1;i<9;i++){
             eachPos = pawnRow.get(i-1);
-            eachPos.set(0,"p"+i);
+            eachPos.set(0,"P"+i);
             pawnRow.set(i-1,eachPos);
         }
         boardPositions.set(1,pawnRow);
