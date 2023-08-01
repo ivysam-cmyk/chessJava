@@ -47,12 +47,12 @@ public class rook {
         System.out.println("Total moves by player 1: "+ numberOfMovesInTotal);
         System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
         //for vertical movement
+        ArrayList<String> betweenInF = new ArrayList<>();
+        ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
+        ArrayList<String> reqPos = reqRow.get(initHorPos);
         if (numofHorMoves ==0){
             if(positions.boardPosChecker(finalPos)){
                 //check all positions in a straight line between them
-                ArrayList<String> betweenInF = new ArrayList<>();
-                ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
-                ArrayList<String> reqPos = reqRow.get(initHorPos);
                 if(initVerPos< finalVerPos){
                     for(int i = initVerPos+1;i<finalVerPos+1;i++){
                         //for the same hor coordinate
@@ -73,6 +73,9 @@ public class rook {
                     // check if all the items in betweenInF are ""
                     for (String item: betweenInF){
                         if (!item.equals(" ")){
+                        for (ArrayList<ArrayList<String>> row : boardPositions) {
+                            System.out.println(row);
+                        }
                             return false;
                         }
                     }
@@ -92,9 +95,8 @@ public class rook {
             // if rook attacks another piece
             } else if (!positions.boardPosChecker(finalPos)){
                 //also works for hor moves
-                
-                ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
-                ArrayList<String> reqPos = reqRow.get(initHorPos);
+                reqRow = boardPositions.get(initVerPos);
+                reqPos = reqRow.get(initHorPos);
                 String pieceString = reqPos.get(0);
                 reqPos.set(0, " ");
                 reqRow.set(initHorPos,reqPos);
@@ -109,17 +111,73 @@ public class rook {
                 reqRow.set(finalHorPos, reqPos);
                 boardPositions.set(finalVerPos, reqRow);
             }
-            for (ArrayList<ArrayList<String>> row : boardPositions) {
-                System.out.println(row);
+        } else if (numofVerMoves == 0){
+            if(positions.boardPosChecker(finalPos)){
+                if(initHorPos<finalHorPos){
+                    //check all positions in a straight line between them
+                    for(int i = initHorPos+1;i<finalHorPos+1;i++){
+                        //for the same hor coordinate
+                        reqRow = boardPositions.get(initVerPos);
+                        reqPos = reqRow.get(i);
+                        betweenInF.add(reqPos.get(0));
+                    }
+                }
+                else if (initHorPos>finalHorPos){
+                    for(int i = initHorPos-1;i>finalHorPos-1;i--){
+                        //for the same hor coordinate
+                        reqRow = boardPositions.get(initVerPos);
+                            reqPos = reqRow.get(i);
+                            betweenInF.add(reqPos.get(0));
+                        }
+                    }
+                    for (String item: betweenInF){
+                        if (!item.equals(" ")){
+                            for (ArrayList<ArrayList<String>> row : boardPositions) {
+                                System.out.println(row);
+                            }
+                            return false;
+                        }
+                    }
+                    reqRow = boardPositions.get(initVerPos);
+                    reqPos = reqRow.get(initHorPos);
+                    String pieceString = reqPos.get(0);
+                    // change the old pos to blank after getting the piece's String
+                    reqPos.set(0, " ");
+                    reqRow = boardPositions.get(finalVerPos);
+                    reqPos = reqRow.get(finalHorPos);
+                    reqPos.set(0, pieceString);
             }
+            else if(!positions.boardPosChecker(finalPos)){
+                //also works for hor moves
+                reqRow = boardPositions.get(initVerPos);
+                reqPos = reqRow.get(initHorPos);
+                String pieceString = reqPos.get(0);
+                reqPos.set(0, " ");
+                reqRow.set(initHorPos,reqPos);
+                boardPositions.set(initVerPos,reqRow);
+
+                reqRow = boardPositions.get(finalVerPos);
+                reqPos = reqRow.get(finalHorPos);
+                piecesAttacked.add(reqPos.get(0));
+                System.out.println("Pieces attacked: "+piecesAttacked);
+                //change the finalPosition's piece to be the rook's name
+                reqPos.set(0, pieceString);
+                reqRow.set(finalHorPos, reqPos);
+                boardPositions.set(finalVerPos, reqRow);
+
+            }
+        }
+        for (ArrayList<ArrayList<String>> row : boardPositions) {
+            System.out.println(row);
         }
         return false;
 
     }
+    
     public boolean move(String initPos, String finalPos){
         return move(initPos, finalPos, -1);
     }
-/*     public static void main(String[] args) {
+    /*     public static void main(String[] args) {
 
     } */
 }
