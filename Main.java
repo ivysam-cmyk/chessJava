@@ -29,6 +29,7 @@ public class Main {
         board.positions();
         do{
             String[] p1posArray = asker("1");
+            // check if the vertical position is same as a pawn
             if (p1posArray[0].substring(1).equals("2")){
                 System.out.println("if cond satisfied");
                 pawn p1 = new pawn();

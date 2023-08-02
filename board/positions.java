@@ -57,13 +57,15 @@ public class positions {
         positions board = new positions();
         board.positions();
         pawn pp = new pawn();
-        pawn p1 = new pawn();
         // pawnOther p2 = new pawnOther();
         pp.move("A2","A4");
-        p1.move("B2","B4");
+        pp.move("B2","B4");
         rook rr = new rook();
         rr.move("A1", "A2");
         rr.move("A2", "B2");
         rr.move("B2", "C2");
+        for (ArrayList<ArrayList<String>> row : boardPositions) {
+            System.out.println(row);
+        }
     }
 }

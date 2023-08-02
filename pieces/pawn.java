@@ -1,13 +1,13 @@
 package pieces;
 import static board.positions.boardPositions;
 import static board.positions.piecesAttacked;
+import static board.moveHistory.moveCount;
 
 import java.util.ArrayList;
 import board.positions;
 
 public class pawn {
     public int multiplier = -1;
-    private int numberOfMovesInTotal = 0;
     //first populate the board, there should be 8 pieces in the index X6
     public static void pop(){
         //get the 2d arraylist and change it
@@ -27,9 +27,6 @@ public class pawn {
             pawnRow.set(i-1,eachPos);
         }
         boardPositions.set(1,pawnRow);
-        for (ArrayList<ArrayList<String>> row : boardPositions) {
-            System.out.println(row);
-        }
     }
 
     public boolean move(String initPos, String finalPos,int multiplier){
@@ -57,7 +54,6 @@ public class pawn {
         numofVerMoves = multiplier * numofVerMoves;
 
         //the ver moves MUST BE -VE AND changed to +ve for the if condition
-        System.out.println("Total moves by player 1: "+ numberOfMovesInTotal);
         //pawn piece should only go up (diagonally)
         System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
         if(numofVerMoves <= 0){
@@ -65,50 +61,48 @@ public class pawn {
         }
         System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
         //if havent moved yet, can only move 1/2 vert
-        if((numberOfMovesInTotal == 0) && (numofVerMoves <=2) && numofHorMoves==0) {
-            //change the position on the board
-            //check if the final pos on board is empty, 8-index = posOnBoard
+        ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
+        // reqPos is each singular pos on the board containing an array
+        ArrayList<String> reqPos = reqRow.get(initHorPos);
+        //get the old pos string first
+        String pieceString = reqPos.get(0);
+        int count = moveCount.containsKey(pieceString) ? moveCount.get(pieceString) : 0;
+        System.out.println("Total moves by player 1: "+ count);
+        if((count == 0) && (numofVerMoves <=2) && numofHorMoves==0) {
             if(positions.boardPosChecker(finalPos)){
-                //get the old pos string first
-                ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
-                // reqPos is each singular pos on the board containing an array
-                ArrayList<String> reqPos = reqRow.get(initHorPos);
-                String pieceString = reqPos.get(0);
-                // make the old position back to blank
+                // get the initial number of moves of the current piece and increment
+                moveCount.put(pieceString, count+1);
                 reqPos.set(0, " ");
                 reqRow = boardPositions.get(finalVerPos);
                 reqPos = reqRow.get(finalHorPos);
                 reqPos.set(0, pieceString);
-                System.out.println(" The new board ... ");
             }
             //8-index = posOnBoard
             // get the name of the p from initPos
-            numberOfMovesInTotal+=1;
-            System.out.println("THE number of moves in total "+ numberOfMovesInTotal);
             return true;
         }
         // if moved b4, and movign w or without attacking other piece
-        else if(numberOfMovesInTotal>0 && numofVerMoves==1){
+        else if(count>0 && numofVerMoves==1){
+            moveCount.put(pieceString, count+1);
             if(positions.boardPosChecker(finalPos)){
                 //get the old pos string first
-                ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
+                reqRow = boardPositions.get(initVerPos);
                 // reqPos is each singular pos on the board containing an array
-                ArrayList<String> reqPos = reqRow.get(initHorPos);
-                String pieceString = reqPos.get(0);
+                reqPos = reqRow.get(initHorPos);
+                pieceString = reqPos.get(0);
                 // make the old position back to blank
                 reqPos.set(0, " ");
                 reqRow = boardPositions.get(finalVerPos);
                 reqPos = reqRow.get(finalHorPos);
                 reqPos.set(0, pieceString);
-                System.out.println("After player 1 moves... ");
             //else if pawn is attacking a piece, move diagonally
             } else if ((positions.boardPosChecker(finalPos) == false) && (numofHorMoves ==1 || numofHorMoves==-1) && numofVerMoves ==1){
                 //the pawn attacks another piece only if it moves diag
                 //get the piece at the final position
-                ArrayList<ArrayList<String>> reqRow = boardPositions.get(initVerPos);
-                ArrayList<String> reqPos = reqRow.get(initHorPos);
+                reqRow = boardPositions.get(initVerPos);
+                reqPos = reqRow.get(initHorPos);
                 //get the name of the piece attacking
-                String pieceString = reqPos.get(0);
+                pieceString = reqPos.get(0);
                 //set the init pos to " "
                 reqPos.set(0, " ");
                 reqRow = boardPositions.get(finalVerPos);
@@ -122,7 +116,6 @@ public class pawn {
                 reqRow.set(finalHorPos, reqPos);
                 boardPositions.set(finalVerPos, reqRow);
             }
-            numberOfMovesInTotal+=1;
             return true;
         }
         return false;
