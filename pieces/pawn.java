@@ -55,7 +55,6 @@ public class pawn {
 
         //the ver moves MUST BE -VE AND changed to +ve for the if condition
         //pawn piece should only go up (diagonally)
-        System.out.println("The number of vertical moves: "+numofVerMoves+" and the number of horizontal moves: "+ numofHorMoves);
         if(numofVerMoves <= 0){
             return false;
         }
@@ -83,6 +82,7 @@ public class pawn {
         }
         // if moved b4, and movign w or without attacking other piece
         else if(count>0 && numofVerMoves==1){
+            System.out.println("count>0");
             moveCount.put(pieceString, count+1);
             if(positions.boardPosChecker(finalPos)){
                 //get the old pos string first

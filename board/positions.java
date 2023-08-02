@@ -3,6 +3,7 @@ package board;
 import pieces.pawn;
 import pieces.pawnOther;
 import pieces.rook;
+import static board.moveHistory.moveCount;
 
 import java.util.ArrayList;
 public class positions {
@@ -67,5 +68,6 @@ public class positions {
         for (ArrayList<ArrayList<String>> row : boardPositions) {
             System.out.println(row);
         }
+        System.out.println(moveCount);
     }
 }
