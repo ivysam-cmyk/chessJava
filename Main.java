@@ -3,6 +3,7 @@ import java.util.Scanner;
 import board.positions;
 import pieces.pawn;
 import pieces.pawnOther;
+import pieces.rook;
 
 import static board.positions.boardPositions;
 
@@ -34,11 +35,20 @@ public class Main {
                 System.out.println("if cond satisfied");
                 pawn p1 = new pawn();
                 p1.move(p1posArray[0], p1posArray[1]);
+                for (ArrayList<ArrayList<String>> row : boardPositions) {
+                    System.out.println(row);
+                }
+            }
+            else if(p1posArray[0].equals("A1") || p1posArray[0].equals("H1")){
+                rook r1 = new rook();
+                r1.move(p1posArray[0], p1posArray[1]);
                 i+=1;
                 for (ArrayList<ArrayList<String>> row : boardPositions) {
                     System.out.println(row);
                 }
-            }else{
+
+            }
+            else{
                 break;
             }
             //player 2
@@ -47,12 +57,20 @@ public class Main {
                 System.out.println("p2 if cond");
                 pawn p2 = new pawnOther();
                 p2.move(p2posArray[0], p2posArray[1]);
-                i+=1;
                 for (ArrayList<ArrayList<String>> row : boardPositions) {
                     System.out.println(row);
                 }
 
-            }else{
+            }
+            else if(p2posArray[0].equals("A8") || p1posArray[0].equals("H8")){
+                rook r2 = new rook();
+                r2.move(p2posArray[0], p2posArray[1]);
+                i+=1;
+                for (ArrayList<ArrayList<String>> row : boardPositions) {
+                    System.out.println(row);
+                }
+            }
+            else{
                 break;
             }
         }while(i<2);

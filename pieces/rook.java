@@ -22,7 +22,7 @@ public class rook {
         eachPos = edgeRow.get(0);
         eachPos.set(0,"R"+1);
         eachPos = edgeRow.get(7);
-        eachPos.set(0,"r"+2);
+        eachPos.set(0,"R"+2);
 
     }
     public boolean move(String initPos, String finalPos,int multiplier){

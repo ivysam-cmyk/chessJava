@@ -3,21 +3,16 @@
 ### classes
 - board.positions
 - pieces.pawn
-`` pawnPop, move``
+`` pop, move``
 
-- elephant 
+- rook ``pop, move``
 - camel
 - horse
 - ...
 
-_methods of classes_
+**TODO**
+make sure to make a function that takes the initPos and finalPos and returns useful values like num of moves in each direc etc and return a dict/array/arraylist 
 
-**pieces.pawn and other pieces**
-move() includes attack
+[x] the number of moves recorded per piece should not reset every time obj is created but per pieceString
 
-<u> Areas of improvement</u>
-Make a move class and every piece will extend it accordingly - this is not possible
-
-[x] make a class where qn asks each player alternately, then the player chooses which pos/(piece type) to move
-
-
+[x] when pop(), differentiate the pieces based on caps, p2 will be caps
