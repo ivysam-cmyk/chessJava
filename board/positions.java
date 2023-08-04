@@ -65,9 +65,6 @@ public class positions {
         rr.move("A1", "A2");
         rr.move("A2", "B2");
         rr.move("B2", "C2");
-        for (ArrayList<ArrayList<String>> row : boardPositions) {
-            System.out.println(row);
-        }
         System.out.println(moveCount);
     }
 }
